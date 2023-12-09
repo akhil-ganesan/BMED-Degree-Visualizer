@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesheet.css') }}">
+
+</head>
+<body>
+    <h1>Georgia Tech Biomedical Engineering Degree Visualizer</h1>
+
+    <div style="text-align:center;">
+        <button onclick="toggleLightTheme()">Toggle Theme</button>
+    </div>
+
+    <p>To use this application, check the courses you have credit for below. Then, 
+        the app will display which courses you can take based on prerequisites. Note this
+        only includes courses in the core BME curriculum (and their STEM course pre-requisites), 
+        not general institute requirements such as humanities and social science classes.
+    </p>
+
+    <h2>Past Coursework</h2>
+    <form id="checklistForm">
+        {% for item in checklist_items %}
+            <input type="checkbox" id="{{ item }}" name="items[]" value="{{ item }}">
+            <label for="{{ item }}"> {{ item }}</label><br>
+        {% endfor %}
+    </form>
+
+    <h2>Courses You Can Take</h2>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('checklistForm').addEventListener('change', function() {
+            updateResult();
+        });
+
+        // Call updateResult on page load
+        window.addEventListener('load', function() {
+            updateResult();
+            // toggleLightTheme();
+        });
+
+        function updateResult() {
+            var selectedItems = Array.from(document.querySelectorAll('input[name="items[]"]:checked'))
+                .map(function (checkbox) {
+                    return checkbox.value;
+                });
+
+            fetch('/process_data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ selected_items: selectedItems }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.result;
+            });
+        }
+
+        // JavaScript to toggle themes
+        function toggleLightTheme() {
+            document.body.classList.toggle('light-theme');
+        }
+
+    </script>
+
+</body>
+</html>

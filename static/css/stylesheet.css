@@ -1,0 +1,82 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #333;  /* Dark theme background color */
+    color: #fff;            /* Dark theme text color */
+    transition: background-color 0.3s, color 0.3s;
+    padding: 50px; /* Add padding to the body */
+}
+
+h1, h2 {
+    color: inherit;  /* Inherit text color from the body */
+    text-align: center;
+}
+
+button {
+    text-align: center; 
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#checklistForm {
+    column-count: 3;  /* Adjust the number of columns as needed */
+    align-items: center;
+}
+
+#checklistForm input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #444;  /* Dark theme result background color */
+    color: #fff;            /* Dark theme result text color */
+    text-align: center;
+}
+
+/* Light theme styles (overrides dark theme styles when body has .light-theme class) */
+body.light-theme {
+    background-color: #fff;
+    color: #333;
+}
+
+body.light-theme h1, body.light-theme h2 {
+    color: inherit;
+}
+
+body.light-theme #result {
+    background-color: #fff;
+    color: #333;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    #checklistForm {
+        column-count: 1;  /* Change to a single column for smaller screens */
+    }
+}
+
+/* Responsive adjustments for medium screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    #checklistForm {
+        column-count: 2;  /* Change to two columns for medium-sized screens */
+    }
+}
+
+/* Responsive adjustments for larger screens */
+@media screen and (min-width: 1025px) {
+    #checklistForm {
+        column-count: 3;  /* Change to three columns for larger screens */
+    }
+}
