@@ -14,7 +14,17 @@ h1, h2 {
 }
 
 button {
-    text-align: center; 
+    text-align: center;
+    background-color: #444;  /* Dark theme result background color */
+    border: none;
+    color: #fff;            /* Dark theme result text color */
+    padding: 7px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
 }
 
 form {
@@ -31,8 +41,60 @@ label {
     align-items: center;
 }
 
+#checklistForm label {
+    display:inline;
+}
+
 #checklistForm input[type="checkbox"] {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    /* Hide the default checkbox */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Use a solid-colored grey box */
+    background-color: #ccc;
+    border: 1px solid #999;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    /*display: inline-block;
+    position: relative;
+    /* Add some padding to the left for visual spacing */
+    /*padding-left: 30px;*/
+    cursor: pointer;
+}
+
+#checklistForm input[type="checkbox"]:checked {
+    /* Change the color when checked to red */
+    background-color: #ff6666;
+}
+
+#checklistForm input[type="checkbox"]:checked:hover {
+    /* Keep the red color on hover when checked */
+    background-color: #ff6666;
+}
+
+#checklistForm input[type="checkbox"]:hover:not(:checked) {
+    /* Darken the color on hover when unchecked */
+    background-color: #999;
+}
+
+#checklistForm input[type="checkbox"]::before {
+    /* Create a pseudo-element to represent the checkmark */
+    /*content: '\2713'; /* Unicode checkmark character */
+    font-size: 16px;
+    color: #fff;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+    opacity: 0; /* Initially hidden */
+}
+
+#checklistForm input[type="checkbox"]:checked::before {
+    /* Show the checkmark when the checkbox is checked */
+    opacity: 1;
 }
 
 #result {
@@ -45,6 +107,8 @@ label {
     text-align: center;
 }
 
+
+
 /* Light theme styles (overrides dark theme styles when body has .light-theme class) */
 body.light-theme {
     background-color: #fff;
@@ -55,10 +119,16 @@ body.light-theme h1, body.light-theme h2 {
     color: inherit;
 }
 
+body.light-theme button {
+    background-color: #fff;
+    color: #333;
+}
+
 body.light-theme #result {
     background-color: #fff;
     color: #333;
 }
+
 
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
