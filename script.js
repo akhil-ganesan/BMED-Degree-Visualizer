@@ -1,4 +1,3 @@
-
 // Include the JavaScript logic for courseVisualizer function here
 const prereqChain = {
     "APPH 1040/1050/1060": [],
@@ -12,7 +11,7 @@ const prereqChain = {
     "PHYS 2212": ["PHYS 2211"],
     "MATH 1551": [],
     "MATH 1553": ["MATH 1551"],
-    "HIST 2111/HIST 2112/INTA 1200/POL 1101/PUBP 3000": [],
+    "U.S. Social Science": [],
     "Social Sciences 1": [],
     "Social Sciences 2": [],
     "Social Sciences 3": [],
@@ -41,6 +40,7 @@ const prereqChain = {
     "Depth Electives": [],
     "Breadth Electives": []
 }; // Your prereq_chain JavaScript object here
+
 
 document.getElementById('checklistForm').addEventListener('change', function() {
     updateResult();
@@ -100,6 +100,7 @@ function generateCheckboxes() {
 // Call the function to generate checkboxes on page load
 window.addEventListener('load', function() {
     generateCheckboxes();
+    /*toggleLightTheme();*/
 });
 
 // JavaScript to toggle themes
