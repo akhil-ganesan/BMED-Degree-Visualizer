@@ -27,21 +27,6 @@ button {
     border-radius: 12px;
 }
 
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    /*display: inline-block;
-    margin-bottom: 5px;*/
-}
-
-#checklistForm {
-    column-count: 5;  /* Adjust the number of columns as needed */
-    /*align-items:center;*/
-    text-align: center;
-}
-
 #checklistForm label {
     display:inline;
     border: 1px solid #888;
@@ -104,6 +89,16 @@ label {
     opacity: 1;
 }
 
+form {
+    margin-bottom: 20px;
+}
+
+#checklistForm {
+    column-count: 5;  /* Adjust the number of columns as needed */
+    /*align-items:center;*/
+    text-align: center;
+}
+
 #result {
     margin-top: 20px;
     padding: 10px;
@@ -145,6 +140,10 @@ body.light-theme #checklistForm input[type="checkbox"]:hover:not(:checked) + lab
     color:#333
 }
 
+body.BME-theme .toggleButton {
+    background-color: #003057;
+    color:#fff
+}
 
 /* Responsive adjustments for smaller screens */
 @media screen and (max-width: 599px) {
