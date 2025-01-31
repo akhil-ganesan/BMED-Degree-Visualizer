@@ -1,7 +1,7 @@
 /* styles.css */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Helvetica'/*, sans-serif*/;
     background-color: #333;  /* Dark theme background color */
     color: #fff;            /* Dark theme text color */
     transition: background-color 0.3s, color 0.3s;
@@ -27,60 +27,52 @@ button {
     border-radius: 12px;
 }
 
-form {
-    margin-bottom: 20px;
-}
-
-label {
-    display: inline-block;
-    margin-bottom: 5px;
-}
-
-#checklistForm {
-    column-count: 3;  /* Adjust the number of columns as needed */
-    align-items: center;
-}
-
 #checklistForm label {
     display:inline;
+    border: 1px solid #888;
+    border-radius: 10px;
+    padding: 3px;
 }
 
 #checklistForm input[type="checkbox"] {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     /* Hide the default checkbox */
-    appearance: none;
+    /* appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     /* Use a solid-colored grey box */
-    background-color: #ccc;
-    border: 1px solid #999;
-    border-radius: 3px;
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    /* background-color: #ccc;
+    border: 0px solid #999;
+    border-radius: 0px; */
+    width: 0px;
+    height: 0px;
+    /*vertical-align: middle;*/
     /*display: inline-block;
     position: relative;
     /* Add some padding to the left for visual spacing */
     /*padding-left: 30px;*/
-    cursor: pointer;
+    /*cursor: pointer;*/
+    visibility: hidden;
+    /*display:none;*/
 }
 
-#checklistForm input[type="checkbox"]:checked {
+#checklistForm input[type="checkbox"]:checked + label {
     /* Change the color when checked to red */
-    background-color: #ff6666;
+    background-color: #003057;
 }
 
-#checklistForm input[type="checkbox"]:checked:hover {
-    /* Keep the red color on hover when checked */
-    background-color: #ff6666;
-}
-
-#checklistForm input[type="checkbox"]:hover:not(:checked) {
+#checklistForm input[type="checkbox"]:hover:not(:checked) + label {
     /* Darken the color on hover when unchecked */
-    background-color: #999;
+    background-color: #444;
+    color: #fff;
 }
 
-#checklistForm input[type="checkbox"]::before {
+#checklistForm input[type="checkbox"]:hover:checked + label {
+    /* Darken the color on hover when unchecked */
+    background-color: #104067;
+}
+
+#checklistForm input[type="checkbox"]::before + label {
     /* Create a pseudo-element to represent the checkmark */
     /*content: '\2713'; /* Unicode checkmark character */
     font-size: 16px;
@@ -92,9 +84,19 @@ label {
     opacity: 0; /* Initially hidden */
 }
 
-#checklistForm input[type="checkbox"]:checked::before {
+#checklistForm input[type="checkbox"]:checked::before + label {
     /* Show the checkmark when the checkbox is checked */
     opacity: 1;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#checklistForm {
+    column-count: 5;  /* Adjust the number of columns as needed */
+    /*align-items:center;*/
+    text-align: center;
 }
 
 #result {
@@ -106,8 +108,6 @@ label {
     color: #fff;            /* Dark theme result text color */
     text-align: center;
 }
-
-
 
 /* Light theme styles (overrides dark theme styles when body has .light-theme class) */
 body.light-theme {
@@ -129,24 +129,53 @@ body.light-theme #result {
     color: #333;
 }
 
+body.light-theme #checklistForm input[type="checkbox"]:checked + label {
+    /* Change the color when checked to red */
+    color:#fff;
+}
+
+body.light-theme #checklistForm input[type="checkbox"]:hover:not(:checked) + label {
+    /* Darken the color on hover when unchecked */
+    background-color: #ddd;
+    color:#333
+}
+
+body.BME-theme .toggleButton {
+    background-color: #003057;
+    color:#fff
+}
 
 /* Responsive adjustments for smaller screens */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 599px) {
     #checklistForm {
         column-count: 1;  /* Change to a single column for smaller screens */
     }
 }
 
 /* Responsive adjustments for medium screens */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 600px) and (max-width: 699) {
     #checklistForm {
         column-count: 2;  /* Change to two columns for medium-sized screens */
     }
 }
 
+/* Original Measurements: 1025, 769, 768 */
+
 /* Responsive adjustments for larger screens */
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 700px) and (max-width: 849) {
     #checklistForm {
         column-count: 3;  /* Change to three columns for larger screens */
+    }
+}
+
+@media screen and (min-width: 850px) and (max-width: 1024) {
+    #checklistForm {
+        column-count: 4;  /* Change to three columns for larger screens */
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #checklistForm {
+        column-count: 5;  /* Change to three columns for larger screens */
     }
 }

@@ -1,4 +1,4 @@
-prereq_chain = {
+{
     "APPH 1040/1050/1060": [],
     "ENGL 1101": [], 
     "ENGL 1102": ["ENGL 1101"],
@@ -39,17 +39,3 @@ prereq_chain = {
     "Depth Electives": [],
     "Breadth Electives": []
 }
-
-def courseVisualizer(coursework):
-    takeable = []
-    for course in prereq_chain.keys():
-        if course not in coursework:
-            prereqs = prereq_chain.get(course)
-            canTake = True
-            for req in prereqs:
-                if req not in coursework:
-                    canTake = False
-            if (canTake):
-                takeable.append(course)
-    
-    return takeable
