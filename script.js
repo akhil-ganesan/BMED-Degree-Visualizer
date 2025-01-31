@@ -154,6 +154,9 @@ function updateResult() {
 function generateCheckboxes() {
     const form = document.getElementById('checklistForm');
     for (const course in prereqChain) {
+        const wrapperDiv = document.createElement('div');
+        wrapperDiv.classList.add('checkbox-wrapper');
+
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = course.replace(/\s/g, ''); // Replace spaces with empty string for id
@@ -164,9 +167,10 @@ function generateCheckboxes() {
         label.htmlFor = checkbox.id;
         label.textContent = course;
 
-        form.appendChild(checkbox);
-        form.appendChild(label);
-        form.appendChild(document.createElement('br'));
+        wrapperDiv.appendChild(checkbox);
+        wrapperDiv.appendChild(label);
+        form.appendChild(wrapperDiv);
+        // form.appendChild(document.createElement('br'));
     }
 }
 
